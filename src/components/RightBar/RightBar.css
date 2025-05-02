@@ -1,0 +1,74 @@
+.rs{
+    background-color: #001030;
+    color: white;
+    position: relative;
+    height: 75vh;
+    overflow-y: scroll;
+}
+.rs-profile img{
+    width: 110px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.rs-profile{
+    padding-top: 60px;
+    text-align: center;
+}
+.rs-profile h3{
+    font-size: 18px;
+    font-weight: 400;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+}
+.rs-profile p{
+    font-size: 10px;
+    opacity: 70%;
+    margin: 0 25px;
+}
+hr{
+    border-color: #ffffff58;
+    margin: 10px 0;
+}
+.rs-media{
+    padding: 0 20px;
+}
+.rs-media div{
+    max-width: 210px;
+    margin-top: 8px;
+    overflow-y: scroll;
+    display: grid;
+    gap: 7px;
+    max-height: 175px;
+    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.rs-media div img{
+    width: 55px;
+    height: auto;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.logout-btn button{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 65px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    background-color: #077eff;
+}
+
+@media (max-width : 900px) {
+    .rs{
+        display: none;
+    }
+}
