@@ -104,8 +104,10 @@ const ProfileUpdate = () => {
       <div className="profile-container">
         <form  onSubmit={ProfileUpdate}>
             <h3>Profile details</h3>
-            <label htmlFor='avatar'>
-              <input onChange={(e)=>setImage(e.target.files[0])} type="file" accept='.png,.jpg,.jpeg' id='avatar' hidden/>
+            <label htmlFor='avatar' onClick={()=>{
+              toast.info("This feature is not available yet.");
+            }}>
+              {/* <input onChange={(e)=>setImage(e.target.files[0])} type="file" accept='.png,.jpg,.jpeg' id='avatar' hidden/> */}
               <img src={image ? URL.createObjectURL(image) :  assets.avatar_icon} alt="" />
               Upload profile image
             </label>
@@ -113,6 +115,7 @@ const ProfileUpdate = () => {
             <textarea onChange={(e)=>setBio(e.target.value)} value={bio} placeholder='Write bio about you'></textarea>
             <button type='submit'>Save</button>
         </form>
+        {/* <img src={image?URL.createObjectURL(image) : assets.logo_icon} className='profile-pic' alt="" /> */}
         <img src={image?URL.createObjectURL(image) : assets.logo_icon} className='profile-pic' alt="" />
       </div>
     </div>

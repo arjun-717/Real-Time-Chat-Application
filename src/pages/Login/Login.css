@@ -26,13 +26,13 @@
 .login-form .form-input{
     padding:8px 10px;
     border:1px solid #c9c9c9;
-    outline-color: #077eff;
+    outline-color: #4b4b4b;
     border-radius: 5px;
 }
 .login-form button{
     padding: 12px;
     border: none;
-    background-color: #077eff;
+    background-color: #4b4b4b;
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -53,8 +53,12 @@
 }
 .login-toogle span{
     font-weight: 600;
-    color: #077eff;
+    color: #00ff99;
     cursor: pointer;
+}
+.checkbox{
+    
+    accent-color: #00ff99;
 }
 
 
@@ -63,6 +67,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 15px;
+        gap: 30px;
     }
 }

@@ -1,6 +1,8 @@
 .ls{
-    background-color: #001030;
-    height: 75vh;
+    /* background-color: #001030; */
+    background-color: #222222;
+    /* height: 75vh; */
+    height:100vh;
 }
 .ls-top{
     padding: 20px;
@@ -11,7 +13,7 @@
     align-items: center;
 }
 .ls-nav .logo{
-    max-width: 140px;
+    max-width: 180px;
 }
 .ls-nav .menu img{
     max-height: 20px;
@@ -24,7 +26,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
-    background-color: #002670;
+    background-color: #3c3c3c;
     
 }
 .ls-search img{
@@ -55,8 +57,8 @@
    
 }
 .friend:hover{
-    background-color: #077eff;
-
+    background-color: #d4d4d4;
+    color: black;
 }
 .friend img{
     width: 40px;
@@ -70,12 +72,13 @@
     flex-direction: column;
     font-size: 14px
 }
+
 .friend div span{
     font-size: 12px;
     color: #9f9f9f;
 }
 .friend:hover  div span{
-    color: white;
+    color: rgb(42, 42, 42);
 }
 .menu{
     position: relative;
@@ -110,7 +113,7 @@
     color:  rgb(0, 255, 0);
 }
 
-@media (max-width:900px) {
+@media (max-width:1000px) {
     .ls{
         width: 100%;
         

@@ -1,14 +1,19 @@
 .chatbox{
-    background-color: #f1f5ff;
+    /* background-color: #f1f5ff; */
+    background-color: #c7c7c7;
     position: relative;
-    height: 75vh;
+    /* height: 75vh; */
+    height:100vh;
+   
+    
 }
 .chat-user{
     display: flex;
     padding: 10px 15px;
     align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid #c6c6c6;
+    gap: 14px;
+    
+    border-bottom: 1px solid #787878;
 }
 .chat-user img{
     width: 25px;
@@ -31,12 +36,16 @@
     display: flex;
     align-items: center;
     position: absolute;
+    justify-content: center;
     bottom: 0;
     left: 0;
     right: 0;
     gap: 15px;
-    background-color: white;
+    background-color:#ffffff;
     padding: 15px 15px;
+}
+.gal-icon{
+    margin-top: 5px;
 }
 .chat-input input{
     border: none;
@@ -52,10 +61,10 @@
     align-items: center;
 }
 .send-btn{
-    width: 28px !important;
+    width: 30px !important;
 }
 .chat-msg{
-    height: calc(100% - 70px);
+    height: calc(100% - 80px);
     overflow-y: scroll;
     padding-bottom: 50px;
     display: flex;
@@ -84,7 +93,7 @@
     font-size: 11px;
 }
 .msg{
-    background-color: #077eff;
+    background-color: #222222;
     color: white;
     font-size: 12px;
     max-width: 200px;
@@ -121,7 +130,7 @@
 .arrow-icon{
     display: none;
 }
-@media (max-width:900px) {
+@media (max-width:1000px) {
     .chatbox{
         width: 100%;
         justify-content: center;
@@ -129,7 +138,7 @@
     .arrow-icon{
         display: block;
     }
-    .help-icon{
+    /* .help-icon{
         display: none;
-    }
+    } */
 }

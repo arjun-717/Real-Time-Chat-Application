@@ -10,13 +10,13 @@ export const AppContextProvider = (props) => {
   const [userData, setUserData] = useState(null);
   const [chatData, setChatData] = useState(null);
 
+  const [messagesId, setMessagesID] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [ChatUser, setChatUser] = useState(null);
 
-  const [messagesId,setMessagesID] = useState(null);
-  const [messages,setMessages] = useState([]);
-  const [ChatUser,setChatUser ] = useState(null);
+  const [chatVisible, setChatVisible] = useState(false);
 
-  const[chatVisible,setChatVisible] = useState(false);
-
+  const [Rnav, setRnav] = useState(false);
 
   const loadUserData = async (uid) => {
     const UserRef = doc(db, "users", uid);
@@ -32,19 +32,9 @@ export const AppContextProvider = (props) => {
     await updateDoc(UserRef, {
       lastSeen: Date.now(),
     });
-    //need to check
-
-    // setInterval(async () => {
-    //     if(Auth.chatUser){
-    //         await updateDoc(UserRef,{
-    //             lastSeen : Date.now()
-    //         })
-    //     }
-    // }, 60000);
 
     setInterval(async () => {
       if (Auth.currentUser) {
-        // Correct check: Check if there's a logged-in user
         const UserRef = doc(db, "users", Auth.currentUser.uid); // Use the current user's UID
         await updateDoc(UserRef, {
           lastSeen: Date.now(),
@@ -52,39 +42,58 @@ export const AppContextProvider = (props) => {
       }
     }, 60000); // Run every 60 seconds
   };
-  useEffect(()=>{
-    if(userData){
-        const chatRef = doc(db,'chats',userData.id);
-        const unSub = onSnapshot(chatRef,async(res)=>{
-            const chatItems = res.data().chatsData;
-            const TempData =[];
-            for (const item of chatItems){
-                const rID = item.rID; // <-- Add this line
-                const userRef = doc(db, 'users', rID); //rID - receiver id it creates when chat are created
-                const userSnap = await getDoc(userRef);
-                const userData = userSnap.data();
-                // TempData.push([{...item,userData}]);
-                TempData.push({ ...item, userData }); // ✅ No extra array
 
-            }
-            setChatData(TempData.sort((a,b)=>b.updatedAt - a.updatedAt ));
-        })
-        return ()=>{
-            unSub();
+  useEffect(() => {
+    if (userData) {
+      const chatRef = doc(db, 'chats', userData.id);
+      const unSub = onSnapshot(chatRef, async (res) => {
+        const data = res.data();
+        if (data && data.chatsData) { // Check if data and chatsData exist
+          const chatItems = data.chatsData;
+          const TempData = [];
+          for (const item of chatItems) {
+            const rID = item.rID; // <-- Add this line
+            const userRef = doc(db, 'users', rID); // rID - receiver id it creates when chats are created
+            const userSnap = await getDoc(userRef);
+            const userData = userSnap.data();
+            TempData.push({ ...item, userData }); // ✅ No extra array
+          }
+          setChatData(TempData.sort((a, b) => b.updatedAt - a.updatedAt));
+        } else {
+          // Handle the case where there is no chatsData or data is undefined
+          console.log('No chatsData available or data is undefined');
         }
+      });
+
+      return () => {
+        unSub();
+      };
     }
-  },[userData])
+  }, [userData]);
+
+  const HandleRightNav = () => {
+    setRnav(true);
+  };
+
+  const HandleCloseRightNav = () => {
+    setRnav(false);
+  };
+
   const value = {
     userData,
     setUserData,
     chatData,
     setChatData,
     loadUserData,
-    messages,setMessages,
-    messagesId,setMessagesID,
-    ChatUser,setChatUser,
-    chatVisible,setChatVisible
+    messages, setMessages,
+    messagesId, setMessagesID,
+    ChatUser, setChatUser,
+    chatVisible, setChatVisible,
+    Rnav, setRnav,
+    HandleRightNav,
+    HandleCloseRightNav
   };
+
   return (
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
   );

@@ -33,7 +33,7 @@ const Login = () => {
                 <button type='submit'>{currState === "Sign Up" ? "Create account" : "Login"}</button>
                 <div className="login-term">
 
-                    <input type='checkbox' />
+                    <input type='checkbox'className='checkbox' />
                     <p>Agree to the terms of use and privacy policy</p>
                 </div>
                 <div className="login-toogle">

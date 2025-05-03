@@ -4,7 +4,7 @@ import assets from '../../assets/assets'
 import { logout } from '../../config/Firebase'
 import { AppContext } from '../../context/AppContext'
 const RightBar = () => {
-  const {ChatUser,messages} = useContext(AppContext);
+  const {ChatUser,messages,Rnav,HandleCloseRightNav} = useContext(AppContext);
   const [Img,setImg] = useState([]);
   useEffect(()=>{
     let temp =[];
@@ -15,11 +15,24 @@ const RightBar = () => {
       setImg(temp)
     })
   },[messages]);
+
+  //ai code
+
+ 
+   // 🚫 Prevent RightBar on mobile if no chat is selected
+   if (!ChatUser) return null;
+
+
   return ChatUser? (
-    <div className="rs">
+    <div className={`rs ${Rnav ? "" :"hide"}`}>
+      <div className="close-icon">
+      <img src={assets.close_icon} alt=""  onClick={HandleCloseRightNav}/>
+      </div>
       <div className="rs-profile">
+        
         <img src={assets.profile_img} alt="" />
-        <h3> {Date.now() - ChatUser.userData.lastSeen <= 70000 ? <img src={assets.green_dot} className='dot' alt="" />:null }{ChatUser.userData.name} </h3>
+        {/* <h3> {Date.now() - ChatUser.userData.lastSeen <= 70000 ? <img src={assets.green_dot} className='dot' alt="" />:null }{ChatUser.userData.name} </h3> */}
+        <h3>{ChatUser.userData.name} </h3>
         <p>{ChatUser.userData.bio}</p>
       </div>
       <hr />

@@ -13,7 +13,7 @@
 .dot{
   width: 15px !important;
 }
-@media (max-width:900px) {
+@media (max-width:1000px) {
   .hidden{
     display: none;
   }

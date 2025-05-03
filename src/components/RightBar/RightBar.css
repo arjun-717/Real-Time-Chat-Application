@@ -1,9 +1,29 @@
 .rs{
-    background-color: #001030;
+    /* background-color: #001030; */
+    background-color: #222222;
     color: white;
     position: relative;
-    height: 75vh;
+    /* height: 75vh; */
+    height:100vh;
     overflow-y: scroll;
+    /* display: none; */
+    position: absolute;
+    right: 0;
+    z-index: 100;
+    width: 25%;
+    transition: 0.3s;
+}
+.hide{
+    right: -50%;
+}
+.close-icon img{
+    width: 25px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: 0.3s;
 }
 .rs-profile img{
     width: 110px;
@@ -30,7 +50,7 @@
 }
 hr{
     border-color: #ffffff58;
-    margin: 10px 0;
+    margin: 20px 0;
 }
 .rs-media{
     padding: 0 20px;
@@ -59,16 +79,43 @@ hr{
     padding: 10px 65px;
     border-radius: 20px;
     border: none;
+    
     outline: none;
     font-size: 12px;
     cursor: pointer;
     font-weight: 300;
-    color: rgb(255, 255, 255);
-    background-color: #077eff;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    background-color: #c7c7c7;
+}
+.dotted{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-@media (max-width : 900px) {
-    .rs{
+@media (max-width : 1000px) {
+    /* .rs{
         display: none;
-    }
+    } */
+    .hide{
+    right: -50%;
+}
+.rs{
+    width: 50%;
+}
+.rs-profile{
+    margin-top: 40px;
+}
+.rs-profile img{
+    width: 80px;
+}
+.logout-btn button{
+    padding: 10px 40px;
+    font-size: 10px;
+    font-weight: 400;
+    border-radius: 15px;
+}
+
 }

@@ -8,13 +8,15 @@ import pic1 from './pic1.png'
 import pic2 from './pic2.png'
 import pic3 from './pic3.png'
 import pic4 from './pic4.png'
-import profile_img from './profile_richard.png'
+// import profile_img from './profile_richard.png'
+import profile_img from './vijay.png'
 import search_icon from './search_icon.png'
-import send_button from './send_button.png'
+import send_button from './send-btn.png'
 import add_icon from './add_icon.png'
 import menu_icon from './menu_icon.png'
 import arrow_icon from './arrow_icon.png'
 import green_dot from './green_dot.png'
+import close_icon from './close.png'
 
 const assets = {
     avatar_icon,
@@ -33,7 +35,8 @@ const assets = {
     add_icon,
     menu_icon,
     arrow_icon,
-    green_dot
+    green_dot,
+    close_icon
 }
 
 export default assets;
