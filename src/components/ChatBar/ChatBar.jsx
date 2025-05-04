@@ -98,11 +98,19 @@ const ChatBar = () => {
     };
 
     const ConvertTimeStamp = (timestamp) => {
-        let date = timestamp.toDate();
+        // Ensure that timestamp is a Firestore Timestamp object
+        let date = timestamp instanceof Date ? timestamp : timestamp.toDate();
+        
         const hr = date.getHours();
         const mins = date.getMinutes().toString().padStart(2, '0');
-        return hr > 12 ? `${hr - 12}:${mins} PM` : `${hr}:${mins} AM`;
+        
+        // Convert to 12-hour format
+        const period = hr >= 12 ? 'PM' : 'AM';
+        const hour = hr > 12 ? hr - 12 : hr;
+        
+        return `${hour}:${mins} ${period}`;
     };
+    
 
     // ✅ Safe listener for message updates
     useEffect(() => {
